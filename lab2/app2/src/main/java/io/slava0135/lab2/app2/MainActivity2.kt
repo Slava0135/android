@@ -18,7 +18,7 @@ class MainActivity2 : AppCompatActivity() {
             Thread.sleep(1000)
             if (isWorking) {
                 textSecondsElapsed.post {
-                    textSecondsElapsed.setText("Seconds elapsed: " + secondsElapsed++)
+                    textSecondsElapsed.text = getString(R.string.elapsed, secondsElapsed++)
                 }
             }
         }
@@ -43,8 +43,8 @@ class MainActivity2 : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         isWorking = true
         getPreferences(MODE_PRIVATE)?.let {
             secondsElapsed = it.getInt(STATE_SECONDS, secondsElapsed)

@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             Thread.sleep(1000)
             if (isWorking) {
                 textSecondsElapsed.post {
-                    textSecondsElapsed.setText("Seconds elapsed: " + secondsElapsed++)
+                    textSecondsElapsed.text = getString(R.string.elapsed, secondsElapsed++)
                 }
             }
         }
@@ -37,8 +37,9 @@ class MainActivity : AppCompatActivity() {
         isWorking = false
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
+        isWorking = true
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
