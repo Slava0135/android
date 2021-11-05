@@ -35,6 +35,8 @@ class StateTest {
         sleep(1000)
         Espresso.onView(ViewMatchers.withId(R.id.bnToSecond))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.fragment1))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
     @Test
@@ -45,6 +47,8 @@ class StateTest {
         Espresso.onView(ViewMatchers.withId(R.id.bnToFirst))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(ViewMatchers.withId(R.id.bnToThird))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.fragment2))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
@@ -58,6 +62,8 @@ class StateTest {
         Espresso.onView(ViewMatchers.withId(R.id.bnToFirst))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(ViewMatchers.withId(R.id.bnToSecond))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.fragment3))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
