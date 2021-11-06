@@ -32,7 +32,6 @@ class StateTest {
     @Test
     fun testState1() {
         rotateScreen()
-        sleep(1000)
         Espresso.onView(ViewMatchers.withId(R.id.bnToSecond))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(ViewMatchers.withId(R.id.fragment1))
@@ -50,6 +49,10 @@ class StateTest {
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(ViewMatchers.withId(R.id.fragment2))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+        Espresso.pressBack()
+        Espresso.onView(ViewMatchers.withId(R.id.fragment1))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
     @Test
@@ -64,6 +67,21 @@ class StateTest {
         Espresso.onView(ViewMatchers.withId(R.id.bnToSecond))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         Espresso.onView(ViewMatchers.withId(R.id.fragment3))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+        Espresso.pressBack()
+        Espresso.onView(ViewMatchers.withId(R.id.fragment2))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.pressBack()
+        Espresso.onView(ViewMatchers.withId(R.id.fragment1))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+    }
+
+    @Test
+    fun testStateAbout() {
+        openAbout()
+        rotateScreen()
+        Espresso.onView(ViewMatchers.withId(R.id.activity_about))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 

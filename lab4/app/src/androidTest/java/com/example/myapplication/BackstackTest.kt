@@ -31,6 +31,8 @@ class BackstackTest {
             .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.bnToFirst))
             .perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withId(R.id.fragment2))
+            .check(ViewAssertions.doesNotExist())
         Espresso.pressBackUnconditionally()
         assertTrue(mainActivityRule.scenario.state == Lifecycle.State.DESTROYED)
     }
@@ -44,6 +46,10 @@ class BackstackTest {
             .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.bnToFirst))
             .perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withId(R.id.fragment2))
+            .check(ViewAssertions.doesNotExist())
+        Espresso.onView(ViewMatchers.withId(R.id.fragment3))
+            .check(ViewAssertions.doesNotExist())
         Espresso.pressBackUnconditionally()
         assertTrue(mainActivityRule.scenario.state == Lifecycle.State.DESTROYED)
     }
@@ -57,6 +63,8 @@ class BackstackTest {
             .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.bnToSecond))
             .perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withId(R.id.fragment3))
+            .check(ViewAssertions.doesNotExist())
         Espresso.pressBack()
         Espresso.pressBackUnconditionally()
         assertTrue(mainActivityRule.scenario.state == Lifecycle.State.DESTROYED)
@@ -65,22 +73,25 @@ class BackstackTest {
     @Test
     fun testBackstackSequence() {
         launchActivity<MainActivity>()
-        Espresso.onView(ViewMatchers.withId(R.id.bnToSecond))
-            .perform(ViewActions.click())
-        Espresso.pressBack()
-        Espresso.onView(ViewMatchers.withId(R.id.fragment1))
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
         Espresso.onView(ViewMatchers.withId(R.id.bnToSecond))
             .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.bnToThird))
             .perform(ViewActions.click())
+
         Espresso.pressBack()
         Espresso.onView(ViewMatchers.withId(R.id.fragment2))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.fragment3))
+            .check(ViewAssertions.doesNotExist())
+
         Espresso.pressBack()
         Espresso.onView(ViewMatchers.withId(R.id.fragment1))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.fragment2))
+            .check(ViewAssertions.doesNotExist())
+        Espresso.onView(ViewMatchers.withId(R.id.fragment3))
+            .check(ViewAssertions.doesNotExist())
     }
 
     @Test
