@@ -21,11 +21,13 @@
         </activity>
         <activity
             android:name="io.slava0135.lab3_3.Activity2"
-            android:label="Activity2">
+            android:label="Activity2"
+            android:parentActivityName="io.slava0135.lab3_3.Activity1">
         </activity>
         <activity
             android:name="io.slava0135.lab3_3.Activity3"
-            android:label="Activity3">
+            android:label="Activity3"
+            android:parentActivityName="io.slava0135.lab3_3.Activity2">
         </activity>
         <activity
             android:name="io.slava0135.lab3_3.About"
