@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment2">
+    tools:context=".Fragment1">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,21 +12,12 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/btn_to_frag1"
+            android:id="@+id/bnToSecond"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/to_first"
+            android:text="@string/to_second"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btn_to_frag3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/to_third"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_to_frag1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
