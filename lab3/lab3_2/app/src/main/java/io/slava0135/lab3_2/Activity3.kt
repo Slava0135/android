@@ -8,12 +8,13 @@ class Activity3 : OptionsBase() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity3)
-        findViewById<Button>(R.id.btn_to_act1).setOnClickListener {
+        findViewById<Button>(R.id.bnToFirst).setOnClickListener {
             setResult(RESULT_CLOSE)
             finish()
         }
-        findViewById<Button>(R.id.btn_to_act2).setOnClickListener {
+        findViewById<Button>(R.id.bnToSecond).setOnClickListener {
             finish()
         }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

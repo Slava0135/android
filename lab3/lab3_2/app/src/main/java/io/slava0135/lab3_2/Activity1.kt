@@ -8,7 +8,7 @@ class Activity1 : OptionsBase() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity1)
-        findViewById<Button>(R.id.btn_to_act2).setOnClickListener {
+        findViewById<Button>(R.id.bnToSecond).setOnClickListener {
             startActivity(Intent(this, Activity2::class.java))
         }
     }

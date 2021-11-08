@@ -1,4 +1,4 @@
-package io.slava0135.lab3_3
+package io.slava0135.lab3_2
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.openContextualActionModeOverflowMenu
