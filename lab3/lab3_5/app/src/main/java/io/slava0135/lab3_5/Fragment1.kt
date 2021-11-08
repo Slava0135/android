@@ -1,7 +1,6 @@
 package io.slava0135.lab3_5
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,19 +15,14 @@ class Fragment1 : OptionsFragment() {
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.fragment_fragment_1, container, false)
+        return inflater.inflate(R.layout.fragment1, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Button>(R.id.btn_to_frag2).setOnClickListener {
-            findNavController().navigate(R.id.action_fragment1_to_fragment2)
+        view.findViewById<Button>(R.id.bnToSecond).setOnClickListener {
+            findNavController().navigate(R.id.action_to2)
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        activity?.title = "Fragment1"
     }
 
 }

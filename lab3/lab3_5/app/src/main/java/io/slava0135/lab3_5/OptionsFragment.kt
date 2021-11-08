@@ -16,7 +16,7 @@ open class OptionsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.to_about) {
-            findNavController().navigate(R.id.action_to_about)
+            findNavController().navigate(R.id.action_about)
             return true
         }
         return super.onOptionsItemSelected(item)
