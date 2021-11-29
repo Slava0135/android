@@ -12,7 +12,8 @@
         <activity
             android:name="io.slava0135.lab3_3.Activity1"
             android:label="Activity1"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
