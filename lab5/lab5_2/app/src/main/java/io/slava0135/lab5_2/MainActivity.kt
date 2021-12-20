@@ -14,15 +14,21 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.os.HandlerCompat
+import androidx.core.view.drawToBitmap
 import com.google.android.material.snackbar.Snackbar
+import java.lang.Error
 import java.lang.Exception
 
 import java.net.URL
 import java.util.concurrent.CompletableFuture
+import java.util.concurrent.Future
 
 class MainActivity : AppCompatActivity() {
 
+    val tag = "IMG"
+
     val photoURL = "https://picsum.photos/seed/slava/180/320"
+    lateinit var downloadJob: Future<*>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,21 +40,31 @@ class MainActivity : AppCompatActivity() {
 
         val mainThreadHandler: Handler = HandlerCompat.createAsync(Looper.getMainLooper())
 
-        downloadImage(mainThreadHandler) {
+        downloadJob = downloadImage(mainThreadHandler) {
             progressBar.visibility = View.GONE
-            imageView.setImageBitmap(it.getOrThrow())
+            imageView.setImageBitmap(it.getOrNull())
         }
     }
 
-    fun downloadImage(handler: Handler, callback: (Result<Bitmap>) -> Unit) {
-        MyApplication.BACKGROUND.execute {
+    fun downloadImage(handler: Handler, callback: (Result<Bitmap>) -> Unit): Future<*> =
+        (application as MyApplication).BACKGROUND.submit {
             try {
+                Log.i(tag, "Started download")
                 val url = URL(photoURL)
                 val image = BitmapFactory.decodeStream(url.openConnection().getInputStream())
-                handler.post { callback(Result.success(image)) }
+                if (image != null) {
+                    Log.i(tag, "Finished download")
+                    handler.post { callback(Result.success(image)) }
+                } else {
+                    Log.i(tag, "Download failed")
+                }
             } catch (e: Exception) {
-                handler.post { callback(Result.failure(e)) }
+                Log.i(tag, "Exceptions and Executors suck")
             }
         }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        downloadJob.cancel(true)
     }
 }

@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var backgroundTask: Future<*>
 
-    fun startBackgroundTask() = MyApplication.executorService.submit {
+    fun startBackgroundTask() = (application as MyApplication).executorService.submit {
         Log.i(tag,"Background task started")
         try {
             while (!Thread.interrupted()) {
