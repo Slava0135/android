@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         downloadJob = downloadImage(mainThreadHandler) {
             progressBar.visibility = View.GONE
-            imageView.setImageBitmap(it.getOrNull())
+            imageView.setImageBitmap(it.getOrThrow())
         }
     }
 
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     override fun onDestroy() {
-        super.onDestroy()
         downloadJob.cancel(true)
+        super.onDestroy()
     }
 }
